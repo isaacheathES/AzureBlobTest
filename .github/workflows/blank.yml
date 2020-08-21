@@ -114,7 +114,7 @@ jobs:
       with:
         connection_string: ${{ secrets.AZURE_DVLUP_BLOB_CONNECTION_STRING }}
         container_name: files
-        source_folder: src\MediaFileManager\PackageProject\SideLoadPackages\
+        source_folder: \
         destination_folder: sp_Develop
         clean_destination_folder: true
 
