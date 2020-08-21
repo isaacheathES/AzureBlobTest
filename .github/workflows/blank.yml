@@ -132,7 +132,7 @@ jobs:
         container_name: files
         source_folder: src\
         destination_folder: sp_Develop
-        clean_destination_folder: false
+        clean_destination_folder: true
 
     # ****************** CREATE RELEASE and UPLOAD ASSETS ******************** #
 
