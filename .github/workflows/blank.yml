@@ -113,9 +113,9 @@ jobs:
       uses: LanceMcCarthy/Action-AzureBlobUpload@v1.2
       with:
         connection_string: ${{ secrets.AZURE_DVLUP_BLOB_CONNECTION_STRING }}
-        container_name: general-app-files
+        container_name: files
         source_folder: src\MediaFileManager\PackageProject\SideLoadPackages\
-        destination_folder: Installers/MediaFileManager
+        destination_folder: sp_Develop
         clean_destination_folder: true
 
     # ********************* ARCHIVE BUILD ARTIFACTS ************************ #
