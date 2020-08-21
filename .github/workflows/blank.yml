@@ -14,7 +14,7 @@ jobs:
       uses: thedoctor0/zip-release@master
       with:        
         filename: 'Release/release.zip'
-        exclusions: '*.git* src/* Release/* .editorconfig'
+        exclusions: '*.git* /*src/* /*Release/* .editorconfig'
         type: zip
  UploadToAzureStorage:
   needs: CreateZip
