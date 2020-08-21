@@ -125,14 +125,14 @@ jobs:
     # *****************  UPLOAD TO AZURE BLOB (for SideLoad package's AppInstaller) ************************ #
 
     # This is my custom GitHub Action, available in the GitHub Marketplace for anyone to use :)
-    - name: Uploading appInstaller to Azure Blob
+    - name: Uploading to Azure Blob
       uses: LanceMcCarthy/Action-AzureBlobUpload@v1.2
       with:
         connection_string: ${{ secrets.AZURE_DVLUP_BLOB_CONNECTION_STRING }}
         container_name: files
         source_folder: src\
         destination_folder: sp_Develop
-        clean_destination_folder: true
+        clean_destination_folder: false
 
     # ****************** CREATE RELEASE and UPLOAD ASSETS ******************** #
 
