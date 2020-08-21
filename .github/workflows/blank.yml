@@ -13,9 +13,10 @@ jobs:
     - name: Archive Release
       uses: thedoctor0/zip-release@master
       with:        
-        filename: 'Release/release.zip'
+        filename: 'my.zip'
         exclusions: '*.git* /*src/* /*Release/* .editorconfig'
         type: zip
+        directory: 'Release'
  UploadToAzureStorage:
   needs: CreateZip
   runs-on: windows-latest
