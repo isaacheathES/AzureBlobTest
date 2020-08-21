@@ -55,22 +55,22 @@ jobs:
 
     # Create my own version number with a specific format using date. 
     # ex: 2020.805.1.0
-    - name: Generate version number
-      uses: Amadevus/pwsh-script@v1
-      id: version-creator
-      with:
-        script: |
-          $buildDay = Get-Date -Format "yyyy.Mdd"
-          $ver = $buildDay + "." + $env:GITHUB_RUN_NUMBER + ".0"
-          Set-ActionVariable UWP_VERSION $ver
+    #- name: Generate version number
+    #  uses: Amadevus/pwsh-script@v1
+    #  id: version-creator
+    #  with:
+    #    script: |
+    #      $buildDay = Get-Date -Format "yyyy.Mdd"
+    #      $ver = $buildDay + "." + $env:GITHUB_RUN_NUMBER + ".0"
+    #      Set-ActionVariable UWP_VERSION $ver
 
     # Decode the Base64 encoded Pfx
-    - name: Decode the Pfx
-      run: |
-        $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.LancelotSoftwareCert_Base64 }}")
-        $currentDirectory = Get-Location
-        $certificatePath = Join-Path -Path $currentDirectory -ChildPath src\MediaFileManager\PackageProject -AdditionalChildPath $env:SigningCertificate
-        [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
+    #- name: Decode the Pfx
+    #  run: |
+    #    $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.LancelotSoftwareCert_Base64 }}")
+    #    $currentDirectory = Get-Location
+    #    $certificatePath = Join-Path -Path $currentDirectory -ChildPath src\MediaFileManager\PackageProject -AdditionalChildPath $env:SigningCertificate
+    #    [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
     
     # Update the appxmanifest with the new verison number, app identity and publisher details.
     #- name: Update manifest version
