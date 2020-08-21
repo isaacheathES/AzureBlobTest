@@ -43,12 +43,12 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.0
 
     # Restore NuGet packages using the nuget config (package sources authenticate using environment variable and nuget.config)
-    - name: NuGet Restore
-      run: dotnet restore $env:Solution_Path --configfile=$env:NuGetConfig_Path --runtime $env:RuntimeIdentifier
+    #- name: NuGet Restore
+    #  run: dotnet restore $env:Solution_Path --configfile=$env:NuGetConfig_Path --runtime $env:RuntimeIdentifier
    
     # Restore the application
-    - name:  Restore the Wpf application to populate the obj folder
-      run: msbuild $env:Solution_Path /t:Restore /p:Configuration=$env:Configuration /p:RuntimeIdentifier=$env:RuntimeIdentifier
+    #- name:  Restore the Wpf application to populate the obj folder
+    #  run: msbuild $env:Solution_Path /t:Restore /p:Configuration=$env:Configuration /p:RuntimeIdentifier=$env:RuntimeIdentifier
 
 
     # ********************* BUILD PREPARATION ************************ #
