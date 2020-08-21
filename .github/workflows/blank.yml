@@ -6,17 +6,30 @@ on:
       - master
 
 jobs:
- CreateZip:
-   runs-on: ubuntu-latest
-   steps:
-    - uses: actions/checkout@v2.3.2
-    - name: Archive Release
-      uses: thedoctor0/zip-release@master
-      with:        
-        filename: 'my.zip'
-        exclusions: '*.git* /*src/* /*Release/* .editorconfig'
-        type: zip
-        directory: 'Release'
+  CreateZip::
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: composer install --ansi --no-progress --no-interaction --prefer-dist
+      - run: mkdir vendor-zip
+      - uses: montudor/action-zip@v0.1.0
+        with:
+          args: zip -qq -r ./vendor-zip/vendor.zip ./
+      - uses: actions/upload-artifact@master
+        with:
+          name: vendor
+          path: vendor-zip
+ #CreateZip:
+   #runs-on: ubuntu-latest
+   #steps:
+    #- uses: actions/checkout@v2.3.2
+    #- name: Archive Release
+      #uses: thedoctor0/zip-release@master
+      #with:        
+        #filename: 'my.zip'
+        #exclusions: '*.git* /*src/* /*Release/* .editorconfig'
+        #type: zip
+        ##directory: 'Release'
  UploadToAzureStorage:
   needs: CreateZip
   runs-on: windows-latest
