@@ -11,7 +11,7 @@ jobs:
    steps:
     - uses: actions/checkout@v2.3.2
     - name: Archive Release
-      uses: KevinMartinLink/AzureBlobTest@master
+      uses: thedoctor0/zip-release@master
       with:        
         filename: 'release.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig'
