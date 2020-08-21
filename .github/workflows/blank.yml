@@ -21,7 +21,7 @@ jobs:
           path: vendor-zip
   UploadToAzureStorage:
     needs: CreateZip
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     env:
       Configuration: Release
     steps:
