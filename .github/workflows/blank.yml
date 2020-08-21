@@ -6,48 +6,36 @@ on:
       - master
 
 jobs:
- job1:
+ Create Zip:
    runs-on: windows-latest
    steps:
     - name: Checkout
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
- job2:
-  needs: job1     
+ Upload to Azure Storage:
+  needs: Create Zip
   runs-on: windows-latest
   env:
     Configuration: Release
-    RuntimeIdentifier: win-x86 #RIDs reference https://github.com/dotnet/runtime/blob/master/src/libraries/pkg/Microsoft.NETCore.Platforms/readme.md
-    UwpBundlePlatform: x86 #package bundles, eg. x86|x64|arm|arm64
-    Solution_Path: src\MediaFileManager\MediaFileManager.sln
-    Wpf_Project_Path: src\MediaFileManager\MediaFileManager.Desktop\MediaFileManager.Desktop.csproj
-    Wap_Project_Directory: src\MediaFileManager\PackageProject
-    Wap_Project_Name: PackageProject.wapproj
-    NuGetConfig_Path: src\nuget.config
-    TELERIK_USERNAME: ${{ secrets.TELERIK_USERNAME }} # this env variable is used in the nuget.config
-    TELERIK_PASSWORD: ${{ secrets.TELERIK_PASSWORD }} # this env variable is used in the nuget.config
-    SigningCertificate: LancelotSoftwareLLC.pfx # For UWP package signing
-    CertPrivateKey: ${{ secrets.LancelotSoftwareCert_Key }}  # For UWP package signing
-    CertThumbprint: ${{ secrets.LancelotSoftwareCert_Thumbprint }} # For UWP package signing
 
   steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
+    #- name: Checkout
+    #  uses: actions/checkout@v2
+    #  with:
+    #    fetch-depth: 0
 
     # ****************** TOOL INSTALL and DEPENDENCY RESTORE ********************* #
 
     # Install the .NET Core workload
-    - name: Install .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '3.1.x'
+    #- name: Install .NET Core
+    #  uses: actions/setup-dotnet@v1
+    #  with:
+    #    dotnet-version: '3.1.x'
 
     # Add  MsBuild to the PATH: https://github.com/microsoft/setup-msbuild
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v1.0.0
+    #- name: Setup MSBuild.exe
+    #  uses: microsoft/setup-msbuild@v1.0.0
 
     # Restore NuGet packages using the nuget config (package sources authenticate using environment variable and nuget.config)
     #- name: NuGet Restore
