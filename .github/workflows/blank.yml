@@ -108,8 +108,8 @@ jobs:
 
     # ********************* ARCHIVE BUILD ARTIFACTS ************************ #
     # ZIP up the sideload packages using Powershell
-    - name: Create AzureBlobTest.zip
-      run: Compress-Archive -Path D:\a\AzureBlobTest\AzureBlobTest\* -DestinationPath D:\a\AzureBlobTest\AzureBlobTest\src\AzureBlobTest.zip
+    #- name: Create AzureBlobTest.zip
+    #  run: Compress-Archive -Path D:\a\AzureBlobTest\AzureBlobTest\* -DestinationPath D:\a\AzureBlobTest\AzureBlobTest\src\AzureBlobTest.zip
 
 
 
