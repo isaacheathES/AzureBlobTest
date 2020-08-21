@@ -6,15 +6,15 @@ on:
       - master
 
 jobs:
- Create Zip:
+ "Create Zip":
    runs-on: windows-latest
    steps:
     - name: Checkout
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
- Upload to Azure Storage:
-  needs: Create Zip
+ "Upload to Azure Storage":
+  needs: "Create Zip"
   runs-on: windows-latest
   env:
     Configuration: Release
